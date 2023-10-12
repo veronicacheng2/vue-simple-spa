@@ -1,0 +1,35 @@
+<template>
+<nav :class="[`navbar-${theme}`,`bg-${theme}`,'navbar','navbar-expand-lg']">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand">My Vue</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li v-for="(page,idx) in pages" class="nav-item" :key="idx">
+            <nav-link :page="page" :isActive="activePage===idx "/>
+            </li>
+        </ul>
+        <form class="d-flex">
+            <button class="btn btn-primary" @click.prevent="changeTheme()">Toggle</button>
+        </form>
+    </div>
+</nav>
+</template>
+
+<script>
+export default {
+    props:['pages','activePage','navLinkClick'],
+    data(){
+        return {theme:'light'}
+    }, methods:{
+        changeTheme(){
+            if(this.theme==='light'){
+                this.theme='dark';
+            }else{
+                this.theme='light';
+            }
+        }
+
+    }
+   
+}
+
+</script>
