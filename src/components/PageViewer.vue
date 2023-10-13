@@ -7,7 +7,19 @@
 
 <script>
 export default {
-    props:['page'],
+    props:{
+        /* for props validation to avoid undefined error */
+        page:{
+            type:Object,
+            /* if this is string, we can just "SOME STRING" but since it is object, we need to use function */
+            default(rawProps){
+                return { 
+                    pageTitle:'',
+                    content:''
+                }
+            }
+        }
+    }
     
 }
 

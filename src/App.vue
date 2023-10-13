@@ -1,6 +1,7 @@
 <template>
     <navbar :pages="pages" :active-page="activePage" :nav-link-click="(index) => activePage = index"/>
-    <page-viewer :page="pages[activePage]"/>
+    <page-viewer v-if="pages.length > 0" :page="pages[activePage]"/>
+    <!--  v-show uses css to control (still in DOM) while v-if removes the whole html element  -->
 </template>
 
 <script>
@@ -9,6 +10,9 @@ import PageViewer from './components/PageViewer.vue';
 
 export default {
     components:{Navbar,PageViewer},
+    created(){
+        this.getPages();
+    },
     data(){
         return {
             activePage:0,
@@ -17,6 +21,13 @@ export default {
                 {link:{text:'About',url:'about.html'},pageTitle:'About Page',content:'This is the about content'},
                 {link:{text:'Contact',url:'contact.html'},pageTitle:'Contact Page',content:'This is the contact content'}
             ]
+        }
+    },methods:{
+        async getPages(){
+            /* simulate hitting some endpoints on server */
+            let res = await fetch("pages.json");
+            let data = await res.json();
+            this.pages = data;
         }
     }
 }

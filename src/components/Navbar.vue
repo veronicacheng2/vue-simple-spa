@@ -4,7 +4,7 @@
         <a href="#" class="navbar-brand">My Vue</a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li v-for="(page,idx) in pages" class="nav-item" :key="idx">
-            <nav-link :page="page" :isActive="activePage===idx "/>
+            <navbar-link :page="page" :isActive="activePage===idx " @click.prevent="navLinkClick(idx)"/>
             </li>
         </ul>
         <form class="d-flex">
@@ -15,7 +15,11 @@
 </template>
 
 <script>
+import NavbarLink from './NavbarLink.vue';
 export default {
+    components:{
+        NavbarLink
+    },
     props:['pages','activePage','navLinkClick'],
     data(){
         return {theme:'light'}
