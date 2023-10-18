@@ -26,7 +26,8 @@ export default {
     props:['pages','activePage','navLinkClick'],
     data(){
         return {theme:'light'}
-    }, methods:{
+    }, 
+    methods:{
         changeTheme(){
             if(this.theme==='light'){
                 this.theme='dark';
