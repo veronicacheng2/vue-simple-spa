@@ -6,7 +6,8 @@
     
     <!-- <page-viewer v-if="pages.length > 0" :page="pages[activePage]"/> -->
 
-    <create-page :page-created="pageCreated" ></create-page>
+        <!-- pageCreated was originally passed as props :page-created, but we now use @page-created to represent a custom event (for readibility) -->
+    <create-page @page-created="pageCreated" />
 
 </template>
 

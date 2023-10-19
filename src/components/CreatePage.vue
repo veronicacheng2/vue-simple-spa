@@ -35,7 +35,7 @@
 </template>
 <script>
 export default {
-    props:['pageCreated','hello'],
+    
     computed:{
         isFormInvalid(){
             return !this.pageTitle || !this.content || !this.linkText || !this.linkUrl
@@ -56,6 +56,20 @@ export default {
                 alert("Please fill the form");
                 return;
             }
+
+
+            /* $ means public */
+            this.$emit('pageCreated',{
+                pageTitle: this.pageTitle,
+                content: this.content,
+                link:{
+                    text:this.linkText,
+                    url:this.linkUrl
+                },
+                published:this.published
+            })
+
+            /*  OLD (using props to pass event)
             this.pageCreated({
                 pageTitle: this.pageTitle,
                 content: this.content,
@@ -65,6 +79,7 @@ export default {
                 },
                 published:this.published
             });
+            */
 
             // ctrl + alt to select multiple lines
             this.pageTitle="";
