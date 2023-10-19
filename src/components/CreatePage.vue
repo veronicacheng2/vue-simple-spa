@@ -74,7 +74,18 @@ export default {
             this.published=true;
           
         },
+    },
+    // side effects 
+    watch:{
 
+        // to monitor Page Title and Link Text
+        pageTitle(newTitle,oldTitle){
+
+            // user hasn't changed the linkText
+            if(this.linkText === oldTitle){
+                this.linkText = newTitle;
+            }
+        }
     }
 }
 
@@ -106,6 +117,16 @@ export default {
     
 </template>
 
+
+
+
+*/
+
+
+/*
+
+Computed Properties: simply return a value, use the existing data in order to compute a value that can be used in template (*no change* to the state, compute value based on current data)
+Watcher: watches a property to change and provides the ability to *make changes* to the state
 
 
 
