@@ -22,7 +22,7 @@
         </div>
         <div class="row mb-3">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox"/>
+                <input class="form-check-input" type="checkbox" v-model="published"/>
                 <label for="gridCheck1" class="form-check-label">Published</label>
             </div>
         </div>
@@ -35,7 +35,7 @@
 </template>
 <script>
 export default {
-    props:['pageCreated'],
+    props:['pageCreated','hello'],
     computed:{
         isFormInvalid(){
             return !this.pageTitle || !this.content || !this.linkText || !this.linkUrl
@@ -46,7 +46,8 @@ export default {
             pageTitle:"",
             content:"",
             linkText:"",
-            linkUrl:""
+            linkUrl:"",
+            published:true
         }
     },
     methods:{
@@ -61,8 +62,17 @@ export default {
                 link:{
                     text:this.linkText,
                     url:this.linkUrl
-                }
-            })
+                },
+                published:this.published
+            });
+
+            // ctrl + alt to select multiple lines
+            this.pageTitle="";
+            this.content="";
+            this.linkText="";
+            this.linkUrl="";
+            this.published=true;
+          
         },
 
     }
