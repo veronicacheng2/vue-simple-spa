@@ -35,7 +35,23 @@
 </template>
 <script>
 export default {
-    
+    emits:{
+        // extra validation
+        pageCreated({pageTitle,content,link}){
+            if(!pageTitle){
+                return false;
+            }
+
+            if(!content){
+                return false
+            }
+
+            if(!link || !link.text || !link.url){
+                return false
+            }
+            return true;
+        }
+    },
     computed:{
         isFormInvalid(){
             return !this.pageTitle || !this.content || !this.linkText || !this.linkUrl
@@ -58,6 +74,7 @@ export default {
             }
 
 
+            
             /* $ means public */
             this.$emit('pageCreated',{
                 pageTitle: this.pageTitle,
