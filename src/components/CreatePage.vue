@@ -86,6 +86,8 @@ export default {
                 published:this.published
             })
 
+            /* Component emitted event does not bubble!!!!!! (the event can only be listened by the direct parent of the component)*/
+
             /*  OLD (using props to pass event)
             this.pageCreated({
                 pageTitle: this.pageTitle,

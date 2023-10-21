@@ -1,12 +1,12 @@
 <template>
-    <navbar :pages="pages" :active-page="activePage" :nav-link-click="(index) => activePage = index"/>
+    <navbar :pages="pages" :active-page="activePage"  />
     
         <!--  v-show uses css to control (still in DOM) while v-if removes the whole html element  -->
     <div v-show="false">Hide this content!</div>
     
-    <!-- <page-viewer v-if="pages.length > 0" :page="pages[activePage]"/> -->
+    <page-viewer v-if="pages.length > 0" :page="pages[activePage]"/>
 
-        <!-- pageCreated was originally passed as props :page-created, but we now use @page-created to represent a custom event (for readibility) -->
+    <!-- pageCreated was originally passed as props :page-created, but we now use @page-created to represent a custom event (for readibility) -->
     <create-page @page-created="pageCreated" />
 
 </template>
@@ -20,6 +20,7 @@ export default {
     components:{Navbar,PageViewer,CreatePage},
     created(){
         this.getPages();
+        this.$bus.$on('navbarLinkActivated',(idx) => {this.activePage = idx})
     },
     
     data(){
