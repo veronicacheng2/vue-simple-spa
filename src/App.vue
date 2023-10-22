@@ -4,10 +4,12 @@
         <!--  v-show uses css to control (still in DOM) while v-if removes the whole html element  -->
     <div v-show="false">Hide this content!</div>
     
-    <page-viewer v-if="pages.length > 0" :page="pages[activePage]"/>
+    <router-view />
+    
+    <!-- <page-viewer v-if="pages.length > 0" :page="pages[activePage]"/> -->
 
     <!-- pageCreated was originally passed as props :page-created, but we now use @page-created to represent a custom event (for readibility) -->
-    <create-page @page-created="pageCreated" />
+    <!-- <create-page @page-created="pageCreated" /> -->
 
 </template>
 
