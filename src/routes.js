@@ -7,7 +7,8 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
-      path: "/",
+      /* ? means optional */
+      path: "/:index?",
       component: PageViewer,
     },
     {
