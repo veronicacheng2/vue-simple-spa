@@ -10,6 +10,7 @@ const router = createRouter({
       /* ? means optional */
       path: "/:index?",
       component: PageViewer,
+      props: true, // passing the params as props
     },
     {
       path: "/create",

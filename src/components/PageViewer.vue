@@ -7,20 +7,28 @@
 
 <script>
 export default {
+    props:["index"],
     created(){
         /* refers to the route currently being handled by this component */
         // this.$route.params
        
-        this.page = this.$pages.getSinglePage(this.$route.params.index)
+        this.page = this.$pages.getSinglePage(this.index)
 
         // Method 1 : setting up watcher to watch params to reload data
+        /*
         this.$watch(() => this.$route.params,(newParams,oldParams) => {
             // what we want to do with the new Params
             this.page = this.$pages.getSinglePage(newParams.index)
         })
+        */
     },
     data(){
         return {page:null}
+    },
+    watch:{
+        index(newIndex,oldIndex){
+            this.page = this.$pages.getSinglePage(newIndex)
+        }
     }
    
     
