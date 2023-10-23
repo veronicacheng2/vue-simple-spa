@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
-        <h1>Page Title</h1>
-        <p>{{$route.params.index}}</p>
+    <div v-if="page" class="container">
+        <h1>{{page.pageTitle }}</h1>
+        <p>{{page.content}}</p>
     </div>
 </template>
 
@@ -9,7 +9,18 @@
 export default {
     created(){
         /* refers to the route currently being handled by this component */
-        this.$route.params
+        // this.$route.params
+       
+        this.page = this.$pages.getSinglePage(this.$route.params.index)
+
+        // Method 1 : setting up watcher to watch params to reload data
+        this.$watch(() => this.$route.params,(newParams,oldParams) => {
+            // what we want to do with the new Params
+            this.page = this.$pages.getSinglePage(newParams.index)
+        })
+    },
+    data(){
+        return {page:null}
     }
    
     
@@ -33,5 +44,8 @@ export default {
 
 
 */
+
+
+// use data store that is reactive (changes in data will cause the application to update)
 
 </script>

@@ -4,7 +4,14 @@
         <a href="#" class="navbar-brand">My Vue</a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <navbar-link :page="page" :idx="idx" :isActive="activePage===idx "  v-for="(page,idx) in publishedPages" 
-            class="nav-item" :key="idx"/>          
+            class="nav-item" :key="idx"/>         
+            
+            <li>
+               <router-link to="/create" class="nav-link">
+            Create
+            </router-link>
+
+            </li> 
         </ul>
         <form class="d-flex">
             <button class="btn btn-primary" @click.prevent="changeTheme()">Toggle</button>

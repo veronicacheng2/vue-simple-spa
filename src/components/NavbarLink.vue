@@ -1,9 +1,10 @@
 <template>
     <li>
-        <a :href="page.link.url" :class="activeClasses" class="nav-link" aria-current="page" 
+        <router-link
+        :to="`/${idx}`"
+         :class="activeClasses" class="nav-link" aria-current="page" 
         :title="`This link goes to the ${page.link.text} page`"
-        @click.prevent="$bus.$emit('navbarLinkActivated',idx)"
-                    >{{ page.link.text }}</a>
+                    >{{ page.link.text }}</router-link>
     </li>
 </template>
 
